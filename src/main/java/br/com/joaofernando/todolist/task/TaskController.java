@@ -44,7 +44,6 @@ public class TaskController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body("A data de início deve ser menor que a data de término da tarefa");
         }
-
         var task = this.taskRepository.save(taskModel);
         return ResponseEntity.status(HttpStatus.OK).body(task);
     }
@@ -53,7 +52,6 @@ public class TaskController {
     public List<TaskModel> listTasks(HttpServletRequest request) {
         var idUser = request.getAttribute("idUser");
         var tasks = this.taskRepository.findByIdUser((UUID) idUser);
-        System.out.println(tasks);
         return tasks;
     }
 
